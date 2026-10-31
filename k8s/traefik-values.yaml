@@ -1,0 +1,36 @@
+deployment:
+  enabled: true
+  kind: Deployment
+  replicas: 2
+
+ingressClass:
+  enabled: true
+  isDefaultClass: false
+  name: traefik
+
+providers:
+  kubernetesIngress:
+    enabled: true
+  kubernetesCRD:
+    enabled: true
+
+service:
+  enabled: true
+  single: true
+  spec:
+    type: NodePort
+
+ports:
+  web:
+    port: 8000
+    expose:
+      default: true
+    exposedPort: 80
+    nodePort: 30080
+
+  websecure:
+    port: 8443
+    expose:
+      default: true
+    exposedPort: 443
+    nodePort: 30443
