@@ -120,6 +120,7 @@ pipeline {
                     *Status:* GitOps manifests updated successfully
                     *Build URL:* ${env.BUILD_URL}
                     """.stripIndent().trim()
+
                 try {
                     withCredentials([
                         string(
@@ -158,6 +159,7 @@ pipeline {
                     *Image Tag:* ${params.IMAGE_TAG}
                     *Build URL:* ${env.BUILD_URL}
                     """.stripIndent().trim()
+
                 try {
                     withCredentials([
                         string(
