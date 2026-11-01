@@ -1,0 +1,310 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2026-10-31T18:33:48Z"
+  generation: 69
+  name: mern-app
+  namespace: argocd
+  resourceVersion: "29433"
+  uid: c49284dc-ea33-482c-b871-d7c8110d5acd
+spec:
+  destination:
+    namespace: mern-app
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: k8s
+    repoURL: https://github.com/PhuSon26/MERN-GitOps.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: false
+      selfHeal: false
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2026-11-01T02:46:41Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2026-10-31T18:34:27Z"
+    deployedAt: "2026-10-31T18:34:49Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revision: 6cbcc99e2219a212f43869bd6253015fc664a17c
+    source:
+      path: k8s
+      repoURL: https://github.com/PhuSon26/MERN-GitOps.git
+      targetRevision: main
+  operationState:
+    finishedAt: "2026-10-31T18:34:49Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 6cbcc99e2219a212f43869bd6253015fc664a17c
+        source:
+          path: k8s
+          repoURL: https://github.com/PhuSon26/MERN-GitOps.git
+          targetRevision: main
+    phase: Succeeded
+    startedAt: "2026-10-31T18:34:27Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/mern-app configured
+        name: mern-app
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/backend-secret configured
+        name: backend-secret
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/backend-config configured
+        name: backend-config
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/mongodb-pv configured
+        name: mongodb-pv
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/mongodb-pvc configured
+        name: mongodb-pvc
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/backend-service configured
+        name: backend-service
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/frontend-service configured
+        name: frontend-service
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/redis-service configured
+        name: redis-service
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/mongodb-service configured
+        name: mongodb-service
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - redis:7.4.11-alpine
+        kind: Deployment
+        message: deployment.apps/redis-deployment configured
+        name: redis-deployment
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - phuson0206/mern-application-backend
+        kind: Deployment
+        message: deployment.apps/backend-deployment configured
+        name: backend-deployment
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - mongo:8
+        kind: Deployment
+        message: deployment.apps/mongodb-deployment configured
+        name: mongodb-deployment
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - phuson0206/mern-application-frontend:1.0.0-35
+        kind: Deployment
+        message: deployment.apps/frontend-deployment configured
+        name: frontend-deployment
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/argocd-ingress configured
+        name: argocd-ingress
+        namespace: argocd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/mern-ingress configured
+        name: mern-ingress
+        namespace: mern-app
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 6cbcc99e2219a212f43869bd6253015fc664a17c
+      source:
+        path: k8s
+        repoURL: https://github.com/PhuSon26/MERN-GitOps.git
+        targetRevision: main
+  reconciledAt: "2026-11-01T04:53:59Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: ConfigMap
+    name: backend-config
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - kind: Namespace
+    name: mern-app
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: mongodb-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolumeClaim
+    name: mongodb-pvc
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: backend-secret
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - kind: Service
+    name: backend-service
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - kind: Service
+    name: frontend-service
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - kind: Service
+    name: mongodb-service
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - kind: Service
+    name: redis-service
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: backend-deployment
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: frontend-deployment
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: mongodb-deployment
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: redis-deployment
+    namespace: mern-app
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: Ingress
+    name: argocd-ingress
+    namespace: argocd
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: Ingress
+    name: mern-ingress
+    namespace: mern-app
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://argocd.phuson.vn/
+    - http://mern.phuson.vn/
+    - http://mern.phuson.vn/api
+    images:
+    - mongo:8
+    - phuson0206/mern-application-backend
+    - phuson0206/mern-application-frontend:1.0.0-35
+    - redis:7.4.11-alpine
+  sync:
+    comparedTo:
+      destination:
+        namespace: mern-app
+        server: https://kubernetes.default.svc
+      source:
+        path: k8s
+        repoURL: https://github.com/PhuSon26/MERN-GitOps.git
+        targetRevision: main
+    revision: 10ca8b8d16c280f3a607205f2c0d8e8634bf3727
+    status: Synced
